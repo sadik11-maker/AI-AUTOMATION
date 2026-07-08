@@ -1,19 +1,31 @@
 from fastapi import FastAPI
 
+from app.db.database import Base, engine
+from app.models.user import User
+from app.schemas.user import UserRegister
+
+# Create all database tables
+Base.metadata.create_all(bind=engine)
+
 app = FastAPI(
     title="AI Customer Support Platform",
-    description="Backend API for AI-powered customer support.",
     version="1.0.0"
 )
 
+
 @app.get("/")
-def root():
+def home():
     return {
-        "message": "Welcome to AI Customer Support Platform"
+        "message": "AI Customer Support Platform API is Running 🚀"
     }
 
-@app.get("/health")
-def health_check():
+
+@app.post("/register")
+def register(user: UserRegister):
     return {
-        "status": "OK"
+        "message": "User data received successfully!",
+        "data": {
+            "full_name": user.full_name,
+            "email": user.email
+        }
     }
