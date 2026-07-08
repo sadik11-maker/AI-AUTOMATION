@@ -1,10 +1,17 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy.orm import Session
 
-from app.db.database import Base, engine
+from app.crud.user import create_user, get_user_by_email
+
+from app.db.database import Base, engine, get_db
 from app.models.user import User
 from app.schemas.user import UserRegister
+from app.services.user_service import (
+    create_user,
+    get_user_by_email,
+)
 
-# Create all database tables
+# Create database tables
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -21,11 +28,30 @@ def home():
 
 
 @app.post("/register")
-def register(user: UserRegister):
+def register(
+    user: UserRegister,
+    db: Session = Depends(get_db)
+):
+    # Check if email already exists
+    existing_user = get_user_by_email(db, user.email)
+
+    if existing_user:
+        raise HTTPException(
+            status_code=400,
+            detail="Email already registered."
+        )
+
+    # Create new user
+    new_user = create_user(
+        db=db,
+        full_name=user.full_name,
+        email=user.email,
+        password=user.password
+    )
+
     return {
-        "message": "User data received successfully!",
-        "data": {
-            "full_name": user.full_name,
-            "email": user.email
-        }
+        "message": "User registered successfully",
+        "id": new_user.id,
+        "name": new_user.full_name,
+        "email": new_user.email
     }
