@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String
 
 from app.db.database import Base
+from sqlalchemy.orm import relationship
 
 
 class User(Base):
@@ -10,3 +11,7 @@ class User(Base):
     full_name = Column(String(100), nullable=False)
     email = Column(String(120), unique=True, nullable=False, index=True)
     password = Column(String(255), nullable=False)
+    tickets = relationship(
+    "Ticket",
+    back_populates="owner"
+)
