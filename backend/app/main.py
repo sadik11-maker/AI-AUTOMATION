@@ -8,14 +8,20 @@ from app.models.user import User
 from app.models.ticket import Ticket
 
 from app.schemas.user import UserRegister
-from app.schemas.ticket import TicketCreate
+from app.schemas.ticket import (
+    TicketCreate,
+    TicketUpdate
+)
 
 from app.crud.user import create_user, get_user_by_email
 from app.crud.auth import authenticate_user
 from app.crud.ticket import (
     create_ticket,
     get_user_tickets,
-    get_ticket_by_id
+    get_ticket_by_id,
+    update_ticket,
+    delete_ticket,
+    close_ticket
 )
 
 from app.utils.security import verify_password
@@ -193,3 +199,100 @@ def get_single_ticket(
         )
 
     return ticket
+# -----------------------------
+# Update Ticket
+# -----------------------------
+@app.put("/tickets/{ticket_id}")
+def update_my_ticket(
+    ticket_id: int,
+    ticket_data: TicketUpdate,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+
+    ticket = get_ticket_by_id(
+        db=db,
+        ticket_id=ticket_id,
+        user_id=current_user.id
+    )
+
+    if ticket is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Ticket not found"
+        )
+
+    updated_ticket = update_ticket(
+        db=db,
+        ticket=ticket,
+        title=ticket_data.title,
+        description=ticket_data.description,
+        priority=ticket_data.priority,
+        status=ticket_data.status
+    )
+
+    return {
+        "message": "Ticket Updated Successfully",
+        "ticket": updated_ticket
+    }
+# -----------------------------
+# Delete Ticket
+# -----------------------------
+@app.delete("/tickets/{ticket_id}")
+def delete_my_ticket(
+    ticket_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+
+    ticket = get_ticket_by_id(
+        db=db,
+        ticket_id=ticket_id,
+        user_id=current_user.id
+    )
+
+    if ticket is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Ticket not found"
+        )
+
+    delete_ticket(
+        db=db,
+        ticket=ticket
+    )
+
+    return {
+        "message": "Ticket Deleted Successfully"
+    }
+# -----------------------------
+# Close Ticket
+# -----------------------------
+@app.patch("/tickets/{ticket_id}/close")
+def close_my_ticket(
+    ticket_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+
+    ticket = get_ticket_by_id(
+        db=db,
+        ticket_id=ticket_id,
+        user_id=current_user.id
+    )
+
+    if ticket is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Ticket not found"
+        )
+
+    closed_ticket = close_ticket(
+        db=db,
+        ticket=ticket
+    )
+
+    return {
+        "message": "Ticket Closed Successfully",
+        "ticket": closed_ticket
+    }        
