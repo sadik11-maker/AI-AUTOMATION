@@ -8,15 +8,31 @@ from app.db.database import Base
 class Ticket(Base):
     __tablename__ = "tickets"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(
+        Integer,
+        primary_key=True,
+        index=True
+    )
 
-    title = Column(String(200), nullable=False)
+    title = Column(
+        String(200),
+        nullable=False
+    )
 
-    description = Column(Text, nullable=False)
+    description = Column(
+        Text,
+        nullable=False
+    )
 
-    status = Column(String(30), default="Open")
+    priority = Column(
+        String(20),
+        default="Medium"
+    )
 
-    priority = Column(String(30), default="Medium")
+    status = Column(
+        String(30),
+        default="Open"
+    )
 
     created_at = Column(
         DateTime(timezone=True),
@@ -25,10 +41,17 @@ class Ticket(Base):
 
     user_id = Column(
         Integer,
-        ForeignKey("users.id")
+        ForeignKey("users.id"),
+        nullable=False
     )
 
     owner = relationship(
         "User",
         back_populates="tickets"
+    )
+
+    comments = relationship(
+        "Comment",
+        back_populates="ticket",
+        cascade="all, delete"
     )

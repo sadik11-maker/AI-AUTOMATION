@@ -1,11 +1,8 @@
 from sqlalchemy.orm import Session
-
 from app.models.ticket import Ticket
 
 
-# -----------------------------
 # Create Ticket
-# -----------------------------
 def create_ticket(
     db: Session,
     title: str,
@@ -28,9 +25,7 @@ def create_ticket(
     return ticket
 
 
-# -----------------------------
 # Get My Tickets
-# -----------------------------
 def get_user_tickets(
     db: Session,
     user_id: int
@@ -43,9 +38,7 @@ def get_user_tickets(
     )
 
 
-# -----------------------------
 # Get Single Ticket
-# -----------------------------
 def get_ticket_by_id(
     db: Session,
     ticket_id: int,
@@ -62,22 +55,23 @@ def get_ticket_by_id(
     )
 
 
-# -----------------------------
 # Update Ticket
-# -----------------------------
 def update_ticket(
     db: Session,
     ticket: Ticket,
-    title: str,
-    description: str,
-    priority: str,
-    status: str
+    title: str = None,
+    description: str = None,
+    priority: str = None
 ):
 
-    ticket.title = title
-    ticket.description = description
-    ticket.priority = priority
-    ticket.status = status
+    if title is not None:
+        ticket.title = title
+
+    if description is not None:
+        ticket.description = description
+
+    if priority is not None:
+        ticket.priority = priority
 
     db.commit()
     db.refresh(ticket)
@@ -85,9 +79,21 @@ def update_ticket(
     return ticket
 
 
-# -----------------------------
+# Close Ticket
+def close_ticket(
+    db: Session,
+    ticket: Ticket
+):
+
+    ticket.status = "Closed"
+
+    db.commit()
+    db.refresh(ticket)
+
+    return ticket
+
+
 # Delete Ticket
-# -----------------------------
 def delete_ticket(
     db: Session,
     ticket: Ticket
@@ -97,15 +103,22 @@ def delete_ticket(
     db.commit()
 
 
-# -----------------------------
-# Close Ticket
-# -----------------------------
-def close_ticket(
-    db: Session,
-    ticket: Ticket
+# Admin All Tickets
+def get_all_tickets(
+    db: Session
 ):
 
-    ticket.status = "Closed"
+    return db.query(Ticket).all()
+# -----------------------------
+# Admin Update Ticket Status
+# -----------------------------
+def admin_update_status(
+    db: Session,
+    ticket: Ticket,
+    status: str
+):
+
+    ticket.status = status
 
     db.commit()
     db.refresh(ticket)
