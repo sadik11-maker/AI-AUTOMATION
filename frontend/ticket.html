@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ticket · 	Sadik Company Support </title>
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="badge">S</span> Sadik Company</div>
+    <a class="nav-link" href="dashboard.html">🎫 My Tickets</a>
+    <a class="nav-link" href="widget-demo.html">💬 Widget Demo</a>
+    <a class="nav-link admin-only" href="admin.html" style="display:none">🛠 Admin</a>
+    <div class="spacer"></div>
+    <div class="user-chip">
+      <strong id="user-name">—</strong>
+      <span class="logout-link nav-link" id="logout-btn" style="padding-left:0;margin-top:8px;">↩ Log out</span>
+    </div>
+  </aside>
+
+  <main class="main">
+    <a href="dashboard.html" class="field-note" style="text-align:left;display:inline-block;margin-bottom:16px;">← Back to tickets</a>
+
+    <div class="card" id="ticket-card">
+      <div class="empty-state">Loading ticket…</div>
+    </div>
+  </main>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/ticket.js"></script>
+</body>
+</html>

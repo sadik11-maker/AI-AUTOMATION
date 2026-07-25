@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Admin · Sadik Company Support</title>
+
+  <link
+    rel="stylesheet"
+    href="assets/css/style.css"
+  />
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+    <!-- ============================= -->
+    <!-- SIDEBAR -->
+    <!-- ============================= -->
+
+    <aside class="sidebar">
+
+      <!-- Brand -->
+      <div class="brand">
+        <span class="badge">S</span>
+        Sadik Company
+      </div>
+
+
+      <!-- Navigation -->
+      <nav aria-label="Main navigation">
+
+        <a
+          class="nav-link"
+          href="dashboard.html"
+        >
+          🎫 My Tickets
+        </a>
+
+        <a
+          class="nav-link"
+          href="widget-demo.html"
+        >
+          💬 Widget Demo
+        </a>
+
+        <a
+          class="nav-link active"
+          href="admin.html"
+          aria-current="page"
+        >
+          🛠 Admin
+        </a>
+
+      </nav>
+
+
+      <!-- Spacer -->
+      <div class="spacer"></div>
+
+
+      <!-- User Section -->
+      <div class="user-chip">
+
+        <strong id="user-name">
+          —
+        </strong>
+
+        <button
+          type="button"
+          class="logout-link nav-link"
+          id="logout-btn"
+          style="padding-left: 0; margin-top: 8px;"
+        >
+          ↩ Log out
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ============================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================= -->
+
+    <main class="main">
+
+      <!-- Page Header -->
+      <div class="page-head">
+
+        <div>
+
+          <h1>
+            Admin Dashboard
+          </h1>
+
+          <p>
+            Overview of all support activity across every customer.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- ============================= -->
+      <!-- STATISTICS -->
+      <!-- ============================= -->
+
+      <section
+        class="stat-grid"
+        id="stat-grid"
+        aria-label="Support statistics"
+      >
+
+        <!-- Total Users -->
+        <div class="stat-card">
+
+          <div
+            class="num"
+            id="total-users"
+          >
+            —
+          </div>
+
+          <div class="lbl">
+            Total users
+          </div>
+
+        </div>
+
+
+        <!-- Total Tickets -->
+        <div class="stat-card">
+
+          <div
+            class="num"
+            id="total-tickets"
+          >
+            —
+          </div>
+
+          <div class="lbl">
+            Total tickets
+          </div>
+
+        </div>
+
+
+        <!-- Open Tickets -->
+        <div class="stat-card">
+
+          <div
+            class="num"
+            id="open-tickets"
+          >
+            —
+          </div>
+
+          <div class="lbl">
+            Open
+          </div>
+
+        </div>
+
+
+        <!-- Closed Tickets -->
+        <div class="stat-card">
+
+          <div
+            class="num"
+            id="closed-tickets"
+          >
+            —
+          </div>
+
+          <div class="lbl">
+            Closed
+          </div>
+
+        </div>
+
+
+        <!-- High Priority -->
+        <div class="stat-card">
+
+          <div
+            class="num"
+            id="high-priority-tickets"
+          >
+            —
+          </div>
+
+          <div class="lbl">
+            High priority
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ============================= -->
+      <!-- ALL TICKETS HEADER -->
+      <!-- ============================= -->
+
+      <div
+        class="page-head"
+        style="margin-bottom: 12px;"
+      >
+
+        <div>
+
+          <h2 style="font-size: 18px;">
+            All Tickets
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <!-- ============================= -->
+      <!-- ALL TICKETS TABLE -->
+      <!-- ============================= -->
+
+      <section
+        class="card"
+        aria-label="All support tickets"
+      >
+
+        <!--
+          Wrapper helps prevent the table
+          from breaking on smaller screens.
+        -->
+        <div style="overflow-x: auto;">
+
+          <table class="admin-table">
+
+            <thead>
+
+              <tr>
+
+                <th scope="col">
+                  Subject
+                </th>
+
+                <th scope="col">
+                  Priority
+                </th>
+
+                <th scope="col">
+                  Status
+                </th>
+
+                <th scope="col">
+                  Created
+                </th>
+
+                <th scope="col">
+                  Actions
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody id="admin-ticket-body">
+
+              <tr>
+
+                <td
+                  colspan="5"
+                  style="text-align: center;"
+                >
+                  Loading…
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- ============================= -->
+  <!-- JAVASCRIPT -->
+  <!-- ============================= -->
+
+  <script src="assets/js/config.js"></script>
+
+  <script src="assets/js/api.js"></script>
+
+  <script src="assets/js/admin.js"></script>
+
+</body>
+
+</html>
