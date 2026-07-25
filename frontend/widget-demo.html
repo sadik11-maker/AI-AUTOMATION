@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Widget Demo · Sadik Company Support</title>
+<link rel="stylesheet" href="assets/css/style.css" />
+<style>
+  .demo-site {
+    max-width: 960px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .demo-nav {
+    background: #14171f;
+    color: #fff;
+    padding: 18px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+  }
+  .demo-nav .links { font-weight: 400; font-size: 13px; color: #9aa2b0; display: flex; gap: 22px; }
+  .demo-hero {
+    padding: 64px 40px;
+    background: linear-gradient(135deg, #edecfb, #f5f6fa);
+    text-align: center;
+  }
+  .demo-hero .kicker {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--teal-dark); margin-bottom: 10px;
+  }
+  .demo-hero h1 { font-family: 'Sora', sans-serif; font-size: 34px; margin: 0 0 12px; }
+  .demo-hero p { color: var(--ink-soft); margin: 0 auto; max-width: 520px; font-size: 15px; }
+  .demo-services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px;
+  }
+  .demo-service {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 22px 18px;
+    text-align: center;
+  }
+  .demo-service .icon { font-size: 26px; margin-bottom: 10px; }
+  .demo-service h3 { font-size: 14px; margin: 0 0 6px; }
+  .demo-service p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+  .demo-footer {
+    padding: 20px 40px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div style="padding-top:20px;">
+  <a href="dashboard.html" class="field-note" style="display:block;text-align:center;margin-bottom:0;">← Back to dashboard</a>
+</div>
+
+<div class="demo-site">
+  <div class="demo-nav">
+    <span>🟣 Sadik Company</span>
+    <span class="links">Home &nbsp; Services &nbsp; About &nbsp; Contact</span>
+  </div>
+  <div class="demo-hero">
+    <div class="kicker">Trusted by shops &amp; companies of every kind</div>
+    <h1>Whatever you're building, we've got you covered</h1>
+    <p>Ask our AI assistant anything, or tap "Talk to a human" in the chat bubble to open a support ticket.</p>
+  </div>
+  <div class="demo-services">
+    <div class="demo-service">
+      <div class="icon">🛍️</div>
+      <h3>Retail &amp; E-commerce</h3>
+      <p>Order tracking, returns, and product questions handled instantly.</p>
+    </div>
+    <div class="demo-service">
+      <div class="icon">🧾</div>
+      <h3>Services &amp; Bookings</h3>
+      <p>appointment changes, billing questions, and account help.</p>
+    </div>
+    <div class="demo-service">
+      <div class="icon">💼</div>
+      <h3>B2B &amp; SaaS</h3>
+      <p>Technical questions and escalations routed to your team.</p>
+    </div>
+  </div>
+  <div class="demo-footer">© 2026 Sadik Company · This is placeholder demo content</div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script
+  src="http://127.0.0.1:8000/static/widget.js"
+  data-api="http://127.0.0.1:8000"
+  data-business="Sadik Company"
+></script>
+</body>
+</html>

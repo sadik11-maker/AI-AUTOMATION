@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create account · 	Sadik Company Support</title>
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<div class="auth-shell">
+  <div class="auth-card">
+    <div class="auth-eyebrow"><span class="dot"></span> Sadik Company</div>
+    <h1>Create your account</h1>
+    <p class="sub">Register to submit and track support tickets.</p>
+
+    <form id="register-form">
+      <label for="full_name">Full name</label>
+      <input type="text" id="full_name" required autocomplete="name" placeholder="Jordan Lee" />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required autocomplete="email" placeholder="you@example.com" />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required minlength="6" autocomplete="new-password" placeholder="At least 6 characters" />
+
+      <div class="field-error" id="error-box"></div>
+
+      <button type="submit" class="btn btn-primary btn-block" id="submit-btn">Create account</button>
+    </form>
+
+    <p class="field-note">Already have an account? <a href="index.html">Sign in</a></p>
+  </div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/auth.js"></script>
+</body>
+</html>

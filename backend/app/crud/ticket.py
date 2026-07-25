@@ -109,6 +109,19 @@ def get_all_tickets(
 ):
 
     return db.query(Ticket).all()
+
+
+# Admin: Get Any Ticket By Id (no owner restriction)
+def get_ticket_by_id_any(
+    db: Session,
+    ticket_id: int
+):
+
+    return (
+        db.query(Ticket)
+        .filter(Ticket.id == ticket_id)
+        .first()
+    )
 # -----------------------------
 # Admin Update Ticket Status
 # -----------------------------

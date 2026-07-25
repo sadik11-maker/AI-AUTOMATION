@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>My Tickets · Sadik Company Support</title>
+
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="brand">
+      <span class="badge">S</span>
+      Sadik Company
+    </div>
+
+    <a class="nav-link active" href="dashboard.html">
+      🎫 My Tickets
+    </a>
+
+    <a class="nav-link" href="widget-demo.html">
+      💬 Widget Demo
+    </a>
+
+    <!-- ADMIN LINK -->
+    <a
+      class="nav-link admin-only"
+      id="admin-link"
+      href="admin.html"
+      style="display:none;"
+    >
+      🛠 Admin
+    </a>
+
+    <div class="spacer"></div>
+
+    <div class="user-chip">
+
+      <strong id="user-name">Loading...</strong>
+
+      <span
+        class="logout-link nav-link"
+        id="logout-btn"
+        style="padding-left:0;margin-top:8px;cursor:pointer;"
+      >
+        ↩ Log out
+      </span>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <div class="page-head">
+
+      <div>
+
+        <h1>My Tickets</h1>
+
+        <p>
+          Track and manage the support tickets you've opened.
+        </p>
+
+      </div>
+
+      <button
+        class="btn btn-primary"
+        id="new-ticket-btn"
+      >
+        + New ticket
+      </button>
+
+    </div>
+
+
+    <!-- TICKET LIST -->
+
+    <div class="card">
+
+      <ul
+        class="ticket-list"
+        id="ticket-list"
+      >
+
+        <li class="empty-state">
+          Loading tickets…
+        </li>
+
+      </ul>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- NEW TICKET MODAL -->
+
+<div
+  class="modal-backdrop"
+  id="modal-backdrop"
+>
+
+  <div class="modal">
+
+    <h2>
+      New support ticket
+    </h2>
+
+    <p class="sub">
+      Tell us what's going on — we'll route it to the right place.
+    </p>
+
+
+    <form id="new-ticket-form">
+
+      <label for="t-title">
+        Subject
+      </label>
+
+      <input
+        type="text"
+        id="t-title"
+        required
+        minlength="5"
+        placeholder="e.g. Order #4821 hasn't arrived"
+      />
+
+
+      <label for="t-description">
+        Details
+      </label>
+
+      <textarea
+        id="t-description"
+        required
+        minlength="10"
+        placeholder="Describe the issue..."
+      ></textarea>
+
+
+      <label for="t-priority">
+        Priority
+      </label>
+
+      <select id="t-priority">
+
+        <option value="Low">
+          Low
+        </option>
+
+        <option
+          value="Medium"
+          selected
+        >
+          Medium
+        </option>
+
+        <option value="High">
+          High
+        </option>
+
+      </select>
+
+
+      <div
+        class="field-error"
+        id="modal-error"
+      ></div>
+
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="btn btn-ghost"
+          id="modal-cancel"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          id="modal-submit"
+        >
+          Create ticket
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="assets/js/config.js"></script>
+
+<script src="assets/js/api.js"></script>
+
+<script src="assets/js/dashboard.js"></script>
+
+</body>
+
+</html>

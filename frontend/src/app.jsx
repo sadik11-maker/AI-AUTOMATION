@@ -12,7 +12,7 @@ import {
 import Dashboard from "./Dashboard";
 
 
-function App() {
+function app() {
 
   // ==========================================
   // MODAL STATES
@@ -1141,4 +1141,4 @@ function App() {
 }
 
 
-export default App;
+export default app;
